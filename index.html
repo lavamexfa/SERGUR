@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERGUR · Soluciones para construcción, industria y seguridad</title>
+<meta name="description" content="Protección en altura con ingeniería real: mallas, balcones, terrazas. Más cierres perimetrales, construcción menor e ingeniería. Cotiza en 30 segundos y pide tu evaluación técnica.">
+<meta property="og:title" content="SERGUR · Soluciones para construcción, industria y seguridad">
+<meta property="og:description" content="Protección con ingeniería. Cotiza en 30 segundos.">
+<meta property="og:image" content="sergur-logo.png">
+<!-- HOOKS MARKETING: pega aquí GTM / Meta Pixel / GA4 / Google Ads cuando tengas los IDs. Todo pasa por window.dataLayer y trackEvent(). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== IDENTIDAD SERGUR (del logo) =====
+   naranja #F26419 · acero #0E2233/#14304a · amarillo seguridad #F2B705 · negro malla #0C1116 · plata #C9CED4 · blanco técnico */
+:root{
+  --orange:#F26419; --orange-d:#c44d0f; --navy:#0E2233; --navy2:#14304a; --navy3:#1d3e5c;
+  --yellow:#F2B705; --silver:#C9CED4; --mesh:#0C1116; --paper:#EEF1F4; --ink:#0E2233; --mut:#586a78;
+  --line:rgba(255,255,255,.10); --line-l:#dde2e8;
+  --disp:'Saira Condensed',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:var(--disp);line-height:1.0;letter-spacing:.005em;text-transform:uppercase}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sec{padding:90px 0}
+@media(max-width:680px){.sec{padding:56px 0}}
+a{color:inherit;text-decoration:none}
+svg.ic{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:.02em;text-transform:uppercase;padding:15px 26px;border-radius:5px;border:0;cursor:pointer;transition:transform .14s,box-shadow .14s,background .14s}
+.btn-o{background:var(--orange);color:#fff;box-shadow:0 5px 0 var(--orange-d)}
+.btn-o:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--orange-d)}
+.btn-o:active{transform:translateY(3px);box-shadow:0 2px 0 var(--orange-d)}
+.btn-line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+.btn-line:hover{border-color:var(--orange)}
+.btn-dark{background:var(--navy);color:#fff}.btn-dark:hover{background:var(--navy2)}
+
+/* hazard stripe (señalética industrial — Layher/CAT) */
+.hazard{height:8px;background:repeating-linear-gradient(45deg,var(--yellow),var(--yellow) 16px,var(--navy) 16px,var(--navy) 32px)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(9,15,22,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff}
+.logo b{font-family:var(--disp);font-weight:800;font-size:25px;letter-spacing:.04em;line-height:.9}
+.logo small{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--orange);display:block;margin-top:2px}
+.links{display:flex;gap:24px;align-items:center}
+.links a{color:#c4cdd6;font-size:14px;font-weight:500}.links a:hover{color:#fff}
+@media(max-width:920px){.links .hide{display:none}}
+
+/* hero */
+.hero{position:relative;color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(1100px 520px at 16% -12%,rgba(242,100,25,.18),transparent 55%),linear-gradient(180deg,#0c1a27,#0a141f)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:64px 0 80px}
+@media(max-width:940px){.hero-in{grid-template-columns:1fr;gap:32px;padding:46px 0 56px}}
+.hero h1{font-size:clamp(36px,5.6vw,60px);font-weight:800}.hero h1 .o{color:var(--orange)}
+.hero .lead{font-size:clamp(16px,2.2vw,19px);color:#bcc8d4;margin:18px 0 24px;max-width:540px;text-transform:none}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.badges{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:24px}
+.badge{display:flex;align-items:center;gap:7px;font-size:13px;color:#aebccb;font-weight:500}
+.badge .ic{color:var(--orange);width:16px;height:16px}
+
+/* cotizador */
+.quoter{background:#fff;color:var(--ink);border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.42);overflow:hidden}
+.q-top{background:var(--navy);color:#fff;padding:15px 22px;display:flex;align-items:center;justify-content:space-between}
+.q-top .t{font-family:var(--disp);font-weight:700;font-size:19px}
+.q-top .dots{display:flex;gap:6px}.q-top .dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25)}.q-top .dots i.on{background:var(--orange)}
+.q-body{padding:22px}.q-step{display:none}.q-step.on{display:block}
+.q-h{font-family:var(--disp);font-weight:700;font-size:20px;margin-bottom:4px}.q-sub{font-size:13.5px;color:var(--mut);margin-bottom:15px}
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.q-opt{border:1.5px solid var(--line-l);border-radius:9px;padding:13px 6px;text-align:center;cursor:pointer;font-weight:600;font-size:13px;transition:.14s;background:#fbfbfc;color:var(--navy)}
+.q-opt:hover{border-color:var(--orange)}.q-opt.sel{border-color:var(--orange);background:rgba(242,100,25,.07)}
+.q-opt .ic{width:26px;height:26px;display:block;margin:0 auto 5px;color:var(--navy2)}
+.q-field{margin-bottom:12px}.q-field label{display:block;font-size:12.5px;font-weight:600;margin-bottom:5px}
+.q-field input,.q-field select{width:100%;padding:11px 12px;border:1.5px solid var(--line-l);border-radius:7px;font-family:inherit;font-size:15px;background:#fbfbfc}
+.q-field input:focus,.q-field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,100,25,.16)}
+.q-more{margin:6px 0 4px;border:1.5px solid var(--line-l);border-radius:7px;padding:4px 12px;background:#fbfbfc}
+.q-more>summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--navy);padding:8px 0;list-style:none}
+.q-more>summary::-webkit-details-marker{display:none}
+.q-more>summary::before{content:"+ ";color:var(--orange);font-weight:700}
+.q-more[open]>summary::before{content:"– "}
+.q-more[open]{padding-bottom:12px}
+.q-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.q-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.q-row{display:flex;gap:10px;margin-top:6px}.q-row .btn{flex:1;font-size:16px;padding:13px}
+.q-est{background:var(--navy);color:#fff;border-radius:11px;padding:20px;text-align:center;margin-bottom:14px}
+.q-est .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#9fb1c0;text-transform:uppercase}
+.q-est .val{font-family:var(--disp);font-weight:800;font-size:32px;color:var(--orange);margin:4px 0}.q-est .note{font-size:12.5px;color:#bccada}
+.q-disc{background:rgba(242,183,5,.12);border:1px solid rgba(242,183,5,.45);border-radius:8px;padding:12px;font-size:12.5px;color:#7a5b00;margin-bottom:14px}
+.q-ok{text-align:center;padding:6px 0}.q-ok .ck{width:54px;height:54px;border-radius:50%;background:rgba(46,158,107,.12);color:#2E9E6B;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.q-link{background:none;border:0;color:var(--mut);font-size:13px;cursor:pointer;text-decoration:underline;margin-top:8px}
+.q-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-l)}
+.q-item .qi-t{flex:1}.q-item .qi-t b{font-size:14.5px}.q-item .qi-t span{font-size:11.5px;color:var(--mut);display:block}
+.q-item .qi-p{font-family:var(--mono);font-weight:600;font-size:13px}
+.q-item .qi-x{background:none;border:0;color:#c0392b;cursor:pointer;font-size:19px;line-height:1;padding:0 4px}
+.q-empty{color:var(--mut);font-size:13px;text-align:center;padding:14px 0}
+.q-reco{background:rgba(242,183,5,.1);border:1px solid rgba(242,183,5,.4);border-radius:8px;padding:11px 13px;font-size:12.5px;color:#7a5b00;margin-bottom:12px}
+.cartmini{margin-top:12px;background:var(--navy);color:#fff;border-radius:8px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.cartmini b{font-family:var(--disp);font-size:15px}.cartmini span{font-size:12px;color:var(--orange)}
+.modo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modo-card{border:1.5px solid var(--line-l);border-radius:10px;padding:18px 12px;text-align:center;cursor:pointer;transition:.14s;background:#fbfbfc}
+.modo-card:hover{border-color:var(--orange);background:rgba(242,100,25,.05)}
+.modo-card .ic{width:32px;height:32px;color:var(--navy2);margin:0 auto 8px;display:block}
+.modo-card b{font-family:var(--disp);font-size:18px;display:block;color:var(--navy)}
+.modo-card span{font-size:11.5px;color:var(--mut)}
+.q-back{background:none;border:0;color:var(--mut);font-size:12.5px;cursor:pointer;text-decoration:underline;margin-bottom:10px}
+.q-fotnote{font-size:11.5px;color:var(--mut);margin-top:5px;text-transform:none}
+input[type=file]{font-size:13px;padding:9px 10px}
+.q-prog{font-family:var(--mono);font-size:11px;color:#9fb1c0}.q-prog b{color:var(--orange)}
+.q-progbar{height:3px;background:rgba(255,255,255,.12)}.q-progbar i{display:block;height:100%;background:var(--orange);width:11%;transition:width .25s}
+.perfil-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.perfil-card{border:1.5px solid var(--line-l);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;transition:.14s;background:#fbfbfc}
+.perfil-card:hover,.perfil-card.sel{border-color:var(--orange);background:rgba(242,100,25,.06)}
+.perfil-card .ic{width:28px;height:28px;color:var(--navy2);margin:0 auto 7px;display:block}
+.perfil-card b{font-family:var(--disp);font-size:15px;color:var(--navy);display:block;line-height:1.05}
+.slot-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.slot{border:1.5px solid var(--line-l);border-radius:7px;padding:9px 12px;cursor:pointer;font-size:13px;font-weight:600;background:#fbfbfc;transition:.14s;color:var(--navy)}
+.slot:hover{border-color:var(--orange)}.slot.sel{border-color:var(--orange);background:var(--orange);color:#fff}
+.q-anrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line-l);font-size:14px}
+.q-anrow b{color:var(--navy)}.q-anrow .v{font-family:var(--mono);font-weight:600}
+.q-anrow .lvl{padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.lvl-baja{background:rgba(46,158,107,.15);color:#1e6b48}.lvl-media{background:rgba(242,183,5,.18);color:#7a5b00}.lvl-alta{background:rgba(192,57,43,.13);color:#a3271b}
+.q-conf{background:var(--navy);color:#fff;border-radius:8px;padding:11px 13px;font-size:12.5px;margin-bottom:12px}.q-conf b{color:var(--orange)}
+.pipe{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.pipe-step{display:flex;align-items:center;gap:11px;padding:8px 0}
+.pipe-step .pd{width:24px;height:24px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--line-l);color:var(--mut)}
+.pipe-step.done .pd{background:#2E9E6B;border-color:#2E9E6B;color:#fff}.pipe-step.now .pd{border-color:var(--orange);color:var(--orange)}
+.pipe-step b{font-size:14px}.pipe-step.done b{color:var(--navy)}.pipe-step span{font-size:12px;color:var(--mut);display:block}
+@media(max-width:420px){.q-grid{grid-template-columns:1fr 1fr}.q-three{grid-template-columns:1fr 1fr}.perfil-grid{grid-template-columns:1fr 1fr}}
+
+/* trust */
+.trust{background:#0a141f;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust .r{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 32px;padding:16px 0}
+.trust .i{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#aebccb;font-weight:500}.trust .i b{color:#fff}.trust .i .ic{color:var(--orange);width:18px;height:18px}
+
+/* generic */
+.head{max-width:760px;margin-bottom:42px}
+.head h2{font-size:clamp(28px,4.4vw,44px);font-weight:800;margin:11px 0 12px}
+.head p{color:var(--mut);font-size:17px;text-transform:none}
+.dark{background:var(--navy);color:#fff}.dark .head h2{color:#fff}.dark .head p{color:#b7c5d2}
+.mesh-dark{background:var(--mesh);color:#fff}.mesh-dark .head h2{color:#fff}.mesh-dark .head p{color:#aebccb}
+.grid{display:grid;gap:18px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:980px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+
+/* feature card */
+.feat{background:#fff;border:1px solid var(--line-l);border-radius:11px;padding:24px}
+.feat .ico{width:46px;height:46px;border-radius:9px;background:var(--navy);color:var(--orange);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feat .ico .ic{width:24px;height:24px}
+.feat h3{font-size:20px;font-weight:700;margin-bottom:6px}.feat p{font-size:14.5px;color:var(--mut);text-transform:none}
+.dark .feat,.mesh-dark .feat{background:var(--navy2);border-color:var(--line)}
+.dark .feat h3,.mesh-dark .feat h3{color:#fff}.dark .feat p,.mesh-dark .feat p{color:#a9bac8}
+.dark .feat .ico,.mesh-dark .feat .ico{background:var(--navy);color:var(--yellow)}
+
+/* media illustration */
+.media{position:relative;aspect-ratio:16/10;border-radius:10px 10px 0 0;overflow:hidden;background:var(--navy)}
+.media svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.media .rep{position:absolute;bottom:8px;right:8px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.4);background:rgba(0,0,0,.3);padding:3px 7px;border-radius:3px}
+.media .star{position:absolute;top:10px;left:10px;background:var(--orange);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:4px 9px;border-radius:4px;z-index:2}
+
+/* service card */
+.svc{background:#fff;border:1px solid var(--line-l);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(14,34,51,.13)}
+.svc .cap{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+.svc h3{font-size:20px;font-weight:700;margin-bottom:5px}.svc p{font-size:14px;color:var(--mut);text-transform:none;flex:1}
+.svc .go{margin-top:13px;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.04em;color:var(--orange);text-transform:uppercase;display:flex;align-items:center;gap:6px}
+
+/* list-tech (errores, materiales, normas, checklist) */
+.tlist{display:grid;gap:11px}
+.titem{display:flex;gap:13px;align-items:flex-start;background:var(--navy2);border:1px solid var(--line);border-radius:9px;padding:15px 17px}
+.titem .ic{width:22px;height:22px;flex:none;margin-top:2px}
+.titem.warn .ic{color:var(--yellow)}.titem.ok .ic{color:#3ec98a}
+.titem b{color:#fff;font-size:15.5px;display:block}.titem span{color:#a9bac8;font-size:13.5px;text-transform:none}
+
+/* vs */
+.vs{background:#fff;border:1px solid var(--line-l);border-radius:12px;overflow:hidden}
+.vs table{width:100%;border-collapse:collapse}
+.vs th,.vs td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line-l);font-size:14.5px}
+.vs thead th{background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;font-size:16px}.vs thead th.sg{color:var(--orange)}
+.vs td.f{font-weight:600}.vs .y{color:#2E9E6B;font-weight:700}.vs .x{color:#c0392b;font-weight:700}.vs tr:last-child td{border-bottom:0}
+
+/* proceso */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+@media(max-width:860px){.steps{grid-template-columns:1fr;gap:14px}}
+.steps .bar{position:absolute;top:18px;left:9%;right:9%;height:2px;background:repeating-linear-gradient(90deg,var(--orange),var(--orange) 7px,transparent 7px,transparent 14px)}
+@media(max-width:860px){.steps .bar{display:none}}
+.step{padding:0 12px}.step .n{width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--orange);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;position:relative;z-index:2;margin-bottom:13px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:4px}.step p{font-size:13.5px;color:var(--mut);text-transform:none}
+
+/* responsable técnico */
+.resp{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--navy2);border:1px solid var(--line);border-radius:12px;padding:28px}
+@media(max-width:680px){.resp{grid-template-columns:1fr}}
+.resp .av{width:90px;height:90px;border-radius:12px;background:var(--navy);color:var(--orange);display:flex;align-items:center;justify-content:center}
+.resp .av .ic{width:46px;height:46px}
+.resp h3{color:#fff;font-size:24px}.resp p{color:#b7c5d2;text-transform:none;margin-top:6px}
+
+/* garantía */
+.guar{display:grid;grid-template-columns:1.3fr .7fr;gap:26px;align-items:center;background:linear-gradient(120deg,var(--navy2),var(--navy));border:1px solid var(--line);border-radius:14px;padding:34px}
+@media(max-width:760px){.guar{grid-template-columns:1fr}}
+.guar h2{color:#fff;font-size:30px}.guar p{color:#bccada;margin-top:8px;text-transform:none}
+.guar .seal{text-align:center;border:2px solid var(--orange);border-radius:12px;padding:18px}
+.guar .seal b{font-family:var(--disp);font-weight:800;font-size:42px;color:var(--orange);display:block;line-height:1}.guar .seal span{font-family:var(--mono);font-size:11px;color:#cdd9e4}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:760px){.faq{grid-template-columns:1fr}}
+.faq details{background:#fff;border:1px solid var(--line-l);border-radius:10px;overflow:hidden}
+.faq summary{padding:16px 18px;cursor:pointer;font-weight:600;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--disp);font-size:22px;color:var(--orange)}.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 18px 16px;color:var(--mut);font-size:14.5px;text-transform:none}
+
+/* cta+form */
+.cta{background:var(--navy)}.fg{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+@media(max-width:920px){.fg{grid-template-columns:1fr;gap:26px}}
+.fg .side h2{color:#fff;font-size:clamp(28px,4.4vw,40px)}.fg .side p{color:#bccada;margin-top:12px;text-transform:none}
+.fg .side .li{display:flex;gap:10px;align-items:center;color:#dbe5ee;font-size:15px;margin-top:13px}.fg .side .li .ic{color:var(--orange);width:18px;height:18px;flex:none}
+.box{background:#fff;border-radius:13px;padding:24px}.box h3{font-size:21px;font-weight:700;margin-bottom:3px}.box .s{color:var(--mut);font-size:13px;margin-bottom:15px;text-transform:none}
+.field{margin-bottom:12px}.field label{display:block;font-size:12.5px;font-weight:600;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1.5px solid var(--line-l);border-radius:7px;font-family:inherit;font-size:15px;background:#fbfbfc}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,100,25,.16)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.okmsg{background:rgba(46,158,107,.1);border:1px solid rgba(46,158,107,.4);color:#1e6b48;border-radius:9px;padding:18px;text-transform:none}
+
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s}.wa:hover{transform:scale(1.08)}
+.wa .ic{width:28px;height:28px;stroke:#fff}
+footer{background:#0a141f;color:#9fb1c0;padding:42px 0 26px;border-top:1px solid var(--line)}
+.fgrid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}footer a{color:#9fb1c0;font-size:14px}footer a:hover{color:var(--orange)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none"><path d="M24 3 L42 13 V35 L24 45 L6 35 V13 Z" fill="#0E2233" stroke="#2a3a49"/><path d="M17 16 H31 V21 H22 V23 H31 V32 H17 V27 H26 V25 H17 Z" fill="#F26419"/><path d="M30 16 H33 V30 A4 4 0 0 1 25 30 H28 A1.5 1.5 0 0 0 31 30 V19 H30 Z" fill="#C9CED4"/></svg>
+      <span><b>SERGUR</b><small>CONSTRUCCIÓN · INDUSTRIA · SEGURIDAD</small></span>
+    </a>
+    <nav class="links">
+      <a class="hide" href="#servicios">Servicios</a>
+      <a class="hide" href="#porque">Por qué SERGUR</a>
+      <a class="hide" href="#proceso">Cómo trabajamos</a>
+      <a class="btn btn-o" style="font-size:14px;padding:9px 16px" href="#cotizar">Cotizar ahora</a>
+    </nav>
+  </div>
+</header>
+<div class="hazard"></div>
+
+<a name="top"></a>
+<!-- HERO + COTIZADOR -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">Soluciones para construcción, industria y operaciones</span>
+      <h1>Protección que <span class="o">no se cae</span> el día que importa.</h1>
+      <p class="lead">Empezamos por la malla, pero somos mucho más: ingeniería, protección en altura, cierres perimetrales y construcción menor. Calcula tu valor estimado en 30 segundos; un especialista valida y cierra el precio.</p>
+      <div class="hero-cta">
+        <a class="btn btn-o" href="#cotizar">Cotizar ahora →</a>
+        <a class="btn btn-line" href="#evaluacion">Solicitar evaluación técnica</a>
+      </div>
+      <div class="badges" id="heroBadges"></div>
+    </div>
+    <div class="quoter reveal" id="cotizar">
+      <div class="q-top"><span class="t" id="qTitle">Cotiza tu protección</span><span class="q-prog">Paso <b id="qPnum">1</b>/9</span></div>
+      <div class="q-progbar"><i id="qProgFill"></i></div>
+      <div class="q-body">
+        <!-- 1 PERFIL -->
+        <div class="q-step on" data-s="1"><div class="q-h">¿Quién usará la protección?</div><div class="q-sub">Nos ayuda a recomendarte la solución correcta.</div><div class="perfil-grid" id="perfilGrid"></div></div>
+        <!-- 2 ESPACIOS -->
+        <div class="q-step" data-s="2"><div class="q-h">Agrega los espacios a proteger</div><div class="q-sub">Uno o varios, en una misma cotización.</div>
+          <div class="q-grid" id="tipoGrid"></div>
+          <div id="cartList2" style="margin-top:12px"></div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(1)">← Atrás</button><button class="btn btn-o" onclick="irAnalisis()">Continuar →</button></div></div>
+        <!-- 3 MEDIDAS -->
+        <div class="q-step" data-s="3"><div class="q-h" id="medH">Medidas</div><div class="q-sub">Aproximadas; el técnico mide en terreno.</div>
+          <div class="q-three"><div class="q-field"><label>Ancho (m)</label><input id="qA" type="number" step="0.1" inputmode="decimal" placeholder="3"></div><div class="q-field"><label>Alto (m)</label><input id="qH" type="number" step="0.1" inputmode="decimal" placeholder="1.2"></div><div class="q-field"><label>Cantidad</label><input id="qC" type="number" inputmode="numeric" value="1"></div></div>
+          <div class="q-field"><label>Foto referencial <span style="color:var(--mut);font-weight:400">(opcional)</span></label><input id="qFotoItem" type="file" accept="image/*" onchange="fotoItem()"><div class="q-fotnote" id="qFotItemNote">Ayuda a estimar mejor. Opcional.</div></div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(2)">← Atrás</button><button class="btn btn-o" onclick="agregarItem()">Agregar espacio →</button></div></div>
+        <!-- 4 ANALISIS -->
+        <div class="q-step" data-s="4"><div class="q-h">Análisis técnico preliminar</div><div class="q-sub">Estimación automática; se confirma en la visita.</div>
+          <div id="analisisBox"></div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(2)">← Atrás</button><button class="btn btn-o" onclick="qStep(5)">Ver cotización →</button></div></div>
+        <!-- 5 COTIZACION -->
+        <div class="q-step" data-s="5"><div class="q-h">Tu cotización</div><div class="q-sub">Inversión estimada referencial.</div>
+          <div id="cartList"></div>
+          <div class="q-est"><div class="lab">Inversión estimada</div><div class="val" id="qVal">—</div><div class="note" id="qDet">—</div></div>
+          <div id="qConf"></div>
+          <div class="q-disc">Incluye <b>materiales, instalación, garantía por escrito, inspección final y soporte.</b> El valor final se confirma en la evaluación técnica sin costo.</div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(4)">← Atrás</button><button class="btn btn-o" onclick="qStep(6)">Continuar →</button></div></div>
+        <!-- 6 LEAD -->
+        <div class="q-step" data-s="6"><div class="q-h">Tus datos</div><div class="q-sub">Solo nombre, teléfono y comuna son obligatorios. El resto nos ayuda a atenderte mejor.</div>
+          <div class="q-field"><label>Nombre*</label><input id="qNom" placeholder="Tu nombre"></div>
+          <div class="q-two"><div class="q-field"><label>Teléfono*</label><input id="qTel" type="tel" inputmode="tel" placeholder="+56 9 ..."></div><div class="q-field"><label>Comuna*</label><input id="qCom" placeholder="Ej: Huechuraba"></div></div>
+          <div class="q-two"><div class="q-field"><label>Correo</label><input id="qMail" type="email" inputmode="email" placeholder="tu@correo.cl (opcional)"></div><div class="q-field"><label>Dirección</label><input id="qDir" placeholder="Calle y número (opcional)"></div></div>
+          <div class="q-field"><label>¿Quién solicita?</label><select id="qSolicita"><option value="Particular">Particular</option><option value="Administrador de edificio">Administrador de edificio</option><option value="Corredora">Corredora de propiedades</option><option value="Constructora">Constructora</option><option value="Inmobiliaria">Inmobiliaria</option><option value="Empresa">Empresa</option></select></div>
+          <details class="q-more"><summary>Datos del inmueble o empresa (opcional)</summary>
+            <div class="q-two"><div class="q-field"><label>Depto / Casa</label><input id="qDepto" placeholder="Ej: 1203"></div><div class="q-field"><label>Torre / Block</label><input id="qTorre" placeholder="Ej: B"></div></div>
+            <div class="q-field"><label>Condominio / Edificio</label><input id="qCondo" placeholder="Nombre del condominio"></div>
+            <div class="q-two"><div class="q-field"><label>Empresa</label><input id="qEmpresa" placeholder="Razón social"></div><div class="q-field"><label>Cargo</label><input id="qCargo" placeholder="Tu cargo"></div></div>
+            <div class="q-field"><label>¿Cómo nos conociste?</label><select id="qComo"><option value="">—</option><option value="Google">Google</option><option value="Instagram">Instagram</option><option value="Facebook">Facebook</option><option value="Recomendación">Recomendación</option><option value="Letrero / vehículo">Letrero / vehículo</option><option value="Otro">Otro</option></select></div>
+          </details>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(5)">← Atrás</button><button class="btn btn-o" onclick="irAgenda()">Continuar →</button></div></div>
+        <!-- 7 AGENDA -->
+        <div class="q-step" data-s="7"><div class="q-h">Agenda tu visita técnica</div><div class="q-sub">Elige día y hora. Sin costo.</div>
+          <div class="q-sub" style="font-weight:600;color:var(--navy);margin-top:4px">Día</div><div class="slot-grid" id="diaGrid"></div>
+          <div class="q-sub" style="font-weight:600;color:var(--navy);margin-top:10px">Hora</div><div class="slot-grid" id="horaGrid"></div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(6)">← Atrás</button><button class="btn btn-o" onclick="irReserva()">Continuar →</button></div></div>
+        <!-- 8 RESERVA -->
+        <div class="q-step" data-s="8"><div class="q-h">Confirma tu reserva</div><div class="q-sub" id="resumenReserva">—</div>
+          <div class="q-disc">Reserva <b>sin costo</b>. El pago de la instalación se coordina después de la visita. <span style="color:var(--mut)">Próximamente: pago en línea (Webpay / Mercado Pago).</span></div>
+          <div class="q-row"><button class="btn btn-dark" onclick="qStep(7)">← Atrás</button><button class="btn btn-o" onclick="confirmarReserva()">Confirmar reserva →</button></div></div>
+        <!-- 9 CONFIRMACION -->
+        <div class="q-step" data-s="9"><div class="q-ok"><div class="ck"><svg class="ic" width="28" height="28" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><div class="q-h" style="text-align:center">¡Listo, <span id="qOkNom">—</span>!</div><p class="q-sub" style="text-align:center" id="okMsg">Tu cotización y visita quedaron registradas en SERGUR.</p></div>
+          <div class="pipe" id="pipe"></div>
+          <a class="btn" id="qWa" style="width:100%;background:#25D366;color:#fff;margin-top:10px" href="#">Enviar fotos por WhatsApp →</a>
+          <button class="btn btn-dark" style="width:100%;margin-top:10px" onclick="generarPDF()">⬇ Descargar Análisis Técnico (PDF · gratis)</button>
+          <div style="text-align:center"><button class="q-link" onclick="reiniciarQuoter()">Nueva cotización</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hazard"></div>
+
+<div class="trust"><div class="wrap r" id="trustRow"></div></div>
+
+<!-- PROBLEMA -->
+<section class="dark sec" id="problema">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">El riesgo real</span><h2>Una caída de altura no avisa.</h2><p>La mayoría de las protecciones se instalan a ojo, sin cálculo ni respaldo. Aguantan a la vista — no el día que algo se apoya con fuerza.</p></div>
+    <div class="grid g3" id="riesgosGrid"></div>
+  </div>
+</section>
+
+<!-- POR QUÉ FALLA UNA INSTALACIÓN (recuperado) -->
+<section class="mesh-dark sec" id="falla">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Lo que nadie te cuenta</span><h2>¿Por qué falla una instalación?</h2><p>No falla la malla: falla el anclaje, el material o el criterio. Estos son los errores que vemos a diario en trabajos informales.</p></div>
+    <div class="grid g2"><div class="tlist reveal" id="erroresA"></div><div class="tlist reveal" id="erroresB"></div></div>
+  </div>
+</section>
+
+<!-- SERVICIOS NIVEL 1 -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Servicio principal</span><h2>Protección en altura</h2><p>Nuestra especialidad y puerta de entrada: protección con respaldo de ingeniería para cada punto de tu hogar o edificio.</p></div>
+    <div class="grid g3" id="nivel1Grid"></div>
+  </div>
+</section>
+
+<!-- SERVICIOS NIVEL 2 -->
+<section class="dark sec" id="mas">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Capacidad real</span><h2>Más soluciones SERGUR</h2><p>SERGUR no es solo mallas. Resolvemos seguridad y construcción para hogares, comunidades y empresas — con la misma ingeniería detrás.</p></div>
+    <div class="grid g4" id="nivel2Grid"></div>
+  </div>
+</section>
+
+<!-- POR QUÉ CONTRATAN SERGUR (nueva) -->
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">La decisión</span><h2>¿Por qué las personas contratan a SERGUR?</h2><p>Porque una protección no se compra por el precio: se compra por la tranquilidad de que va a responder.</p></div>
+    <div class="grid g4" id="razonesGrid"></div>
+  </div>
+</section>
+
+<!-- VS INFORMAL (recuperado) -->
+<section class="dark sec" id="diferencia">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">La diferencia</span><h2>SERGUR vs. instalador informal.</h2><p>Se ven parecido el primer día. Dejan de parecerse el día que algo se apoya con fuerza.</p></div>
+    <div class="vs reveal"><table>
+      <thead><tr><th>&nbsp;</th><th class="sg">SERGUR</th><th>Informal</th></tr></thead>
+      <tbody>
+        <tr><td class="f">Cálculo de anclajes</td><td class="y">✓ Según norma</td><td class="x">✕ A ojo</td></tr>
+        <tr><td class="f">Material con certificado de ensayo</td><td class="y">✓ Trazable</td><td class="x">✕ Sin respaldo</td></tr>
+        <tr><td class="f">Profesional responsable</td><td class="y">✓ Ingeniero a cargo</td><td class="x">✕ Anónimo</td></tr>
+        <tr><td class="f">Inspección final</td><td class="y">✓ Documentada</td><td class="x">✕ Ninguna</td></tr>
+        <tr><td class="f">Garantía por escrito</td><td class="y">✓ Hasta 5 años</td><td class="x">✕ Verbal o nula</td></tr>
+        <tr><td class="f">Inspección anual</td><td class="y">✓ Incluida</td><td class="x">✕ No existe</td></tr>
+        <tr><td class="f">Atiende empresas y obra</td><td class="y">✓ Residencial e industrial</td><td class="x">✕ Solo casas</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJA SERGUR: proceso + checklist + materiales + normas (recuperado) -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Cómo trabajamos</span><h2>Ingeniería de principio a fin.</h2><p>Cada instalación sigue un protocolo. Por eso responde — y por eso podemos garantizarla.</p></div>
+    <div class="steps reveal" style="margin-bottom:48px">
+      <div class="bar"></div>
+      <div class="step"><div class="n">1</div><h3>Cotizas</h3><p>Estimas el valor aquí en 30 segundos.</p></div>
+      <div class="step"><div class="n">2</div><h3>Evaluamos</h3><p>Visita, medición y diagnóstico sin costo.</p></div>
+      <div class="step"><div class="n">3</div><h3>Definimos</h3><p>Solución a medida y precio cerrado.</p></div>
+      <div class="step"><div class="n">4</div><h3>Instalamos</h3><p>Trabajo profesional y supervisado.</p></div>
+      <div class="step"><div class="n">5</div><h3>Inspección final</h3><p>Verificamos cada punto antes de entregar.</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="reveal"><h3 style="font-size:22px;margin-bottom:14px">Checklist de calidad</h3><div class="tlist" id="checklist"></div></div>
+      <div class="reveal"><h3 style="font-size:22px;margin-bottom:14px">Materiales y normas</h3><div class="tlist" id="matnorm"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESPONSABLE TÉCNICO (recuperado) -->
+<section class="dark sec" id="responsable">
+  <div class="wrap reveal">
+    <div class="resp">
+      <div class="av"><svg class="ic" width="46" height="46" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div>
+        <span class="eyebrow">Responsable técnico</span>
+        <h3 style="margin-top:8px">Detrás de cada obra hay un Ingeniero en Prevención de Riesgos que pone su nombre.</h3>
+        <p>No un instalador anónimo: un profesional con título que dirige el trabajo de principio a fin y se hace responsable de que tu protección cumpla. Esa es la diferencia entre comprar una malla y contratar una solución de seguridad.</p>
+      </div>
+    </div>
+    <div class="grid g4" id="respPilares" style="margin-top:18px"></div>
+    <p style="text-align:center;color:#8ea0b0;font-size:13px;margin-top:18px;text-transform:none;font-family:var(--mono)">Ingeniero en Prevención de Riesgos · Dirección técnica SERGUR</p>
+  </div>
+</section>
+
+<!-- GARANTÍA -->
+<section class="sec" id="garantia">
+  <div class="wrap reveal"><div class="guar">
+    <div><span class="eyebrow">Respaldo SERGUR</span><h2 style="margin-top:10px">Garantía por escrito + Programa de Inspección Anual.</h2><p>No desaparecemos después de instalar. Tu protección queda registrada y la revisamos cada año para que siga cumpliendo. Si algo no está a la altura, respondemos.</p></div>
+    <div class="seal"><b>5</b><span>AÑOS DE GARANTÍA</span></div>
+  </div></div>
+</section>
+
+<!-- CASOS -->
+<section class="dark sec" id="casos">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Nuestro trabajo</span><h2>Proyectos SERGUR</h2><p>Galería de casos reales en construcción. Estructura lista para antes/después de instalaciones residenciales, industriales y perimetrales.</p></div>
+    <div class="grid g3" id="casosGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap" style="max-width:920px">
+    <div class="head reveal"><span class="eyebrow">Dudas frecuentes</span><h2>Las preguntas difíciles, respondidas.</h2></div>
+    <div class="faq reveal">
+      <details><summary>¿Cuánto cuesta?</summary><div class="a">El cotizador te da un estimado al instante y la evaluación técnica confirma el precio final, sin costo ni compromiso.</div></details>
+      <details><summary>¿Cuánto demora?</summary><div class="a">La mayoría de las instalaciones residenciales se completan en una sola visita tras aprobar la cotización.</div></details>
+      <details><summary>¿Instalan en altura?</summary><div class="a">Sí, con los resguardos y el equipo de protección personal que la norma exige.</div></details>
+      <details><summary>¿Qué pasa si se rompe o cede?</summary><div class="a">Está cubierto por la garantía por escrito. Por eso instalamos con cálculo y material con certificado de ensayo: para que no pase, y si pasa, respondemos.</div></details>
+      <details><summary>¿Por qué SERGUR vale más que un informal?</summary><div class="a">Porque el precio incluye lo que no se ve: cálculo de anclajes, material con certificado de ensayo, un ingeniero responsable, inspección final y garantía. Lo barato ahorra justo en lo que falla.</div></details>
+      <details><summary>¿Por qué no contratar al más barato?</summary><div class="a">Una protección es un seguro, no un adorno. El más barato recorta en anclaje y material —lo que sostiene el peso el día crítico—. Si cede, el ahorro se vuelve el problema más caro.</div></details>
+      <details><summary>¿Qué garantía ofrecen?</summary><div class="a">Hasta 5 años por escrito, más el Programa de Inspección Anual que mantiene la protección revisada.</div></details>
+      <details><summary>¿Trabajan con empresas y obra?</summary><div class="a">Sí. Cierres perimetrales, protección de vanos y soluciones de seguridad para comunidades, edificios y faenas.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + FORM -->
+<section class="cta sec" id="evaluacion">
+  <div class="wrap fg">
+    <div class="side reveal">
+      <span class="eyebrow">Empieza aquí</span>
+      <h2>Pide tu evaluación técnica sin costo.</h2>
+      <p>¿Prefieres que te contactemos directo? Déjanos tus datos y un especialista coordina contigo el mismo día.</p>
+      <div class="li"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Respuesta el mismo día</div>
+      <div class="li"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Sin costo y sin compromiso</div>
+      <div class="li"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Residencial e industrial</div>
+      <div class="li"><svg class="ic" width="18" height="18" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Diagnóstico de un ingeniero</div>
+    </div>
+    <div class="box reveal">
+      <div id="formView">
+        <h3>Solicitar evaluación</h3><div class="s">Tus datos quedan registrados al instante en SERGUR. No los compartimos.</div>
+        <div class="field"><label>Nombre</label><input id="fNom" placeholder="Tu nombre"></div>
+        <div class="two"><div class="field"><label>Teléfono / WhatsApp</label><input id="fTel" type="tel" placeholder="+56 9 ..."></div><div class="field"><label>Comuna</label><input id="fCom" placeholder="Ej: Huechuraba"></div></div>
+        <div class="field"><label>¿Qué necesitas?</label><select id="fTipo"><option value="">Selecciona…</option><option>Protección residencial</option><option>Protección industrial</option><option>Cierre perimetral</option><option>Construcción menor</option><option>Proyecto especial</option><option>Otro</option></select></div>
+        <div class="field"><label>Comentarios <span style="color:var(--mut);font-weight:400">(opcional)</span></label><textarea id="fMsg" rows="3" placeholder="Cuéntanos del lugar o proyecto"></textarea></div>
+        <button class="btn btn-o" style="width:100%" onclick="enviarLead()">Solicitar evaluación técnica</button>
+        <button class="btn" style="width:100%;background:#25D366;color:#fff;margin-top:9px" onclick="enviarWhatsApp()">O escríbenos por WhatsApp</button>
+        <p style="font-size:11.5px;color:var(--mut);text-align:center;margin-top:10px;text-transform:none">Al enviar aceptas que te contactemos para coordinar tu evaluación.</p>
+      </div>
+      <div id="okView" style="display:none"><div class="okmsg"><b style="font-size:18px;font-family:var(--disp)">✓ ¡Solicitud recibida!</b><p style="margin-top:8px">Gracias <span id="okNom">—</span>. Un especialista te contactará hoy. Para adelantar, mándanos fotos por WhatsApp.</p><a class="btn" style="background:#25D366;color:#fff;margin-top:14px;width:100%" id="okWa" href="#">Enviar fotos por WhatsApp →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard"></div>
+<footer>
+  <div class="wrap fgrid">
+    <div><a class="logo" href="#top"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 3 L42 13 V35 L24 45 L6 35 V13 Z" fill="#0E2233" stroke="#2a3a49"/><path d="M17 16 H31 V21 H22 V23 H31 V32 H17 V27 H26 V25 H17 Z" fill="#F26419"/><path d="M30 16 H33 V30 A4 4 0 0 1 25 30 H28 A1.5 1.5 0 0 0 31 30 V19 H30 Z" fill="#C9CED4"/></svg><span><b>SERGUR</b><small style="color:var(--orange)">CONSTRUCCIÓN · INDUSTRIA · SEGURIDAD</small></span></a>
+      <p style="margin-top:12px;max-width:340px;font-size:13.5px;text-transform:none">Soluciones para construcción, industria y seguridad. Protección con ingeniería real · Santiago, Chile.</p></div>
+    <div style="display:flex;gap:46px;flex-wrap:wrap">
+      <div><b style="color:#fff;font-family:var(--disp)">Servicios</b><br><br><a href="#servicios">Protección en altura</a><br><a href="#mas">Soluciones empresas</a><br><a href="#mas">Cierres perimetrales</a></div>
+      <div><b style="color:#fff;font-family:var(--disp)">Contacto</b><br><br><a href="#cotizar">Cotizar</a><br><a href="#" id="footWa">WhatsApp</a><br><span id="footMail">contacto@sergur.cl</span></div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;font-family:var(--mono)">© <span id="yr"></span> SERGUR · Soluciones para construcción, industria y seguridad</div>
+</footer>
+
+<a class="wa" id="waFloat" href="#" aria-label="WhatsApp"><svg class="ic" width="28" height="28" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+
+<script>
+/* ===== CONFIG ===== */
+const SERGUR={ whatsapp:'56900000000', email:'contacto@sergur.cl', waMsg:'Hola SERGUR, quiero cotizar mi protección.' };
+/* BACKEND (opcional): pega tu Project URL y anon key de Supabase para recibir leads desde cualquier celular.
+   Si los dejas vacíos, la web funciona igual que hoy (solo en este navegador). Ver SERGUR_Plan_Backend_y_Ads.md */
+const SUPA_URL='https://oyhnyannyghncqrwhojb.supabase.co';
+const SUPA_KEY='sb_publishable_pNTlnfG6vMvLPSXkCj41TA_O0Zs-7CA';
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('footMail').textContent=SERGUR.email;
+
+/* ===== SISTEMA DE ICONOS (line industrial, consistente) ===== */
+const P={
+  shield:'M12 3l8 4v5c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V7l8-4z',
+  check:'M5 13l4 4L19 7',
+  shieldcheck:'M12 3l8 4v5c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V7l8-4z M9 12l2 2 4-4',
+  mesh:'M3 8h18 M3 12h18 M3 16h18 M7 4v16 M12 4v16 M17 4v16',
+  ladder:'M7 3v18 M17 3v18 M7 7h10 M7 11h10 M7 15h10',
+  building:'M4 21V5l8-2v18 M12 21V8l8 2v11 M7 8h2 M7 12h2 M7 16h2 M16 13h1 M16 17h1',
+  crane:'M5 21h6 M8 21V6 M8 6h11 M8 6L4 10 M19 6v4 M19 10h-4',
+  fence:'M4 9l2-3 2 3v9H4z M10 9l2-3 2 3v9h-4z M16 9l2-3 2 3v9h-4z M3 12h18',
+  gear:'M12 9a3 3 0 100 6 3 3 0 000-6z M12 3v2 M12 19v2 M5 5l1.5 1.5 M17.5 17.5L19 19 M3 12h2 M19 12h2 M5 19l1.5-1.5 M17.5 6.5L19 5',
+  factory:'M3 21V11l5 3V11l5 3V8l8 5v8z M7 21v-3 M12 21v-3 M17 21v-3',
+  wrench:'M14 7a4 4 0 01-5 5l-5 5 2 2 5-5a4 4 0 005-5l-2 2-2-2 2-2z',
+  warning:'M12 4l9 16H3z M12 10v4 M12 17v.5',
+  anchor:'M12 7a2 2 0 100-4 2 2 0 000 4z M12 7v13 M5 13a7 7 0 0014 0 M5 13H3 M19 13h2',
+  award:'M12 3a5 5 0 100 10 5 5 0 000-10z M9 13l-2 8 5-3 5 3-2-8',
+  doc:'M6 3h8l4 4v14H6z M14 3v4h4 M9 13h6 M9 17h6',
+  clipboard:'M9 4h6v2H9z M7 5h2v15h10V5h2v16H7z M9 11l1.5 1.5L13 10 M9 16l1.5 1.5L13 15',
+  headset:'M4 13a8 8 0 0116 0 M4 13v3a2 2 0 002 2h1v-5H6 M20 13v3a2 2 0 01-2 2h-1v-5h2',
+  scale:'M12 3v18 M5 7h14 M5 7l-2 6h4z M19 7l-2 6h4z M8 20h8',
+  family:'M9 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z M16 9a2 2 0 100-4 2 2 0 000 4z M4 20v-4a4 4 0 018 0v4 M14 20v-3a3 3 0 016 0v3',
+  paw:'M5 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3z M19 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3z M9 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3z M15 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3z M12 12c-2.5 0-4 1.8-4 3.5S9.5 19 12 19s4-1.8 4-3.5S14.5 12 12 12z',
+  star:'M12 3l2.5 6 6.5.5-5 4 1.5 6.5-5.5-3.5-5.5 3.5 1.5-6.5-5-4 6.5-.5z',
+  clock:'M12 21a9 9 0 100-18 9 9 0 000 18z M12 7v5l3 2'
+};
+function ico(n){return '<svg class="ic" viewBox="0 0 24 24">'+P[n].split(' M').map((d,i)=>'<path d="'+(i?'M':'')+d+'"/>').join('')+'</svg>';}
+
+/* ===== TRACKING ===== */
+function gp(n){return new URLSearchParams(location.search).get(n)||'';}
+function detectarCanal(){const s=(gp('utm_source')||'').toLowerCase(),m=(gp('utm_medium')||'').toLowerCase();
+  if(gp('gclid')||(s.includes('google')&&m.includes('cpc'))||s==='google_ads')return 'google_ads';
+  if(gp('fbclid')||s.includes('facebook')||s.includes('instagram')||s.includes('meta'))return 'meta_ads';
+  if(s.includes('business')||s==='gbp')return 'google_business';
+  if(m==='referral'||s==='referido'||gp('ref'))return 'referido';
+  const r=document.referrer;if(!r)return 'directo';if(/google\./.test(r))return 'organico';if(/facebook|instagram/.test(r))return 'meta_ads';return 'organico';}
+const CANAL=detectarCanal();
+const UTM={source:gp('utm_source'),medium:gp('utm_medium'),campaign:gp('utm_campaign'),content:gp('utm_content')};
+function trackEvent(n,d){try{(window.dataLayer=window.dataLayer||[]).push({event:n,...d});}catch(e){}}
+trackEvent('page_view',{canal:CANAL});
+
+/* ===== WHATSAPP ===== */
+function waLink(x){return 'https://wa.me/'+SERGUR.whatsapp+'?text='+encodeURIComponent(SERGUR.waMsg+(x?(' '+x):'')+' (origen: '+CANAL+')');}
+['waFloat','footWa','okWa','qWa'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=waLink('');});
+function enviarWhatsApp(){trackEvent('whatsapp_click',{canal:CANAL});window.open(waLink(''),'_blank');}
+
+/* ===== CONTENIDO (data-driven) ===== */
+const feat=(ic,t,d)=>`<div class="feat reveal"><div class="ico">${ico(ic)}</div><h3>${t}</h3><p>${d}</p></div>`;
+document.getElementById('heroBadges').innerHTML=[['shieldcheck','Garantía por escrito'],['check','Instalación profesional'],['gear','Soluciones a medida'],['building','Santiago y regiones'],['factory','Residencial e industrial']]
+  .map(b=>`<span class="badge">${ico(b[0])}${b[1]}</span>`).join('');
+document.getElementById('trustRow').innerHTML=[['award','Ingeniero <b>responsable</b>'],['factory','Residencial e <b>industrial</b>'],['shieldcheck','Garantía hasta <b>5 años</b>'],['clipboard','<b>Inspección</b> anual']]
+  .map(t=>`<div class="i">${ico(t[0])}${t[1]}</div>`).join('');
+document.getElementById('riesgosGrid').innerHTML=[
+  ['family','Niños','Un segundo cerca de un balcón abierto basta. La protección debe resistir impacto real, no solo verse firme.'],
+  ['paw','Mascotas','Se asoman, saltan, empujan. Una malla mal anclada cede justo donde nadie mira.'],
+  ['factory','Industria y obra','Caída de objetos, perímetros sin control, riesgo a terceros. En faena, eso es responsabilidad legal.']
+].map(r=>feat(r[0],r[1],r[2])).join('');
+
+/* errores comunes (por qué falla) */
+const titem=(ic,t,d,cls)=>`<div class="titem ${cls}">${ico(ic)}<div><b>${t}</b><span>${d}</span></div></div>`;
+document.getElementById('erroresA').innerHTML=[
+  ['warning','Anclaje al material equivocado','Fijar a tabique o ladrillo hueco sin refuerzo. El día que tira fuerte, suelta.'],
+  ['warning','Cáncamos mal distribuidos','Separación excesiva entre puntos: la malla aguanta a la vista, no al impacto.'],
+  ['warning','Material sin certificar','Monofilamento delgado de ferretería que se degrada con el sol en meses.']
+].map(e=>titem(e[0],e[1],e[2],'warn')).join('');
+document.getElementById('erroresB').innerHTML=[
+  ['warning','Sin tensión ni guardacabos','El cable se afloja, la malla se vence y deja huecos peligrosos.'],
+  ['warning','Sin cálculo ni responsable','Nadie firma, nadie responde. Si falla, el problema es tuyo.'],
+  ['warning','Sin inspección final','Se entrega sin verificar cada punto. Los errores aparecen después.']
+].map(e=>titem(e[0],e[1],e[2],'warn')).join('');
+
+/* servicios nivel 1 */
+const scene=(g,ic,star)=>`<div class="media">${star?'<span class="star">PRODUCTO ESTRELLA</span>':''}<svg class="scene" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14304a"/><stop offset="1" stop-color="#0a141f"/></linearGradient><pattern id="p${g}" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0H20M0 0V20" stroke="rgba(255,255,255,.05)"/></pattern></defs><rect width="320" height="200" fill="url(#${g})"/><rect width="320" height="200" fill="url(#p${g})"/><g transform="translate(160 100)" stroke="#F26419" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="scale(2.4) translate(-12 -12)">${P[ic].split(' M').map((d,i)=>'<path d="'+(i?'M':'')+d+'"/>').join('')}</g></g></svg><span class="rep">reemplazar por foto</span></div>`;
+const svc=(g,ic,t,d,star)=>`<div class="svc reveal">${scene(g,ic,star)}<div class="cap"><h3>${t}</h3><p>${d}</p><a class="go" href="#cotizar">Cotizar / consultar ${ico('check').replace('class="ic"','class="ic" width="15" height="15"')}</a></div></div>`;
+document.getElementById('nivel1Grid').innerHTML=[
+  ['n1','mesh','Mallas de seguridad','El producto estrella: balcones, ventanas y terrazas con cálculo y material con certificado de ensayo.',1],
+  ['n2','building','Balcones y terrazas','Los puntos de mayor riesgo, resueltos con anclaje perimetral firme.',0],
+  ['n3','ladder','Ventanas y escaleras','Vanos, desniveles y aberturas asegurados sin perder luz ni vista.',0]
+].map(s=>svc(s[0],s[1],s[2],s[3],s[4])).join('');
+
+/* servicios nivel 2 */
+document.getElementById('nivel2Grid').innerHTML=[
+  ['fence','Cierres perimetrales','Patios, sitios y faenas delimitados y protegidos.'],
+  ['wrench','Construcción menor','Mejoras, reparaciones y obras civiles menores.'],
+  ['gear','Ingeniería de seguridad','Diagnóstico, cálculo y dirección técnica profesional.'],
+  ['factory','Seguridad industrial','Protección de vanos y perímetros para empresas y obra.'],
+  ['doc','Proyectos especiales','Soluciones a medida fuera de lo estándar.'],
+  ['headset','Soluciones para empresas','Comunidades, edificios y faenas con un solo responsable.'],
+  ['anchor','Obras civiles menores','Trabajos puntuales con estándar de ingeniería.'],
+  ['shieldcheck','Mantención y postventa','Acompañamiento e inspección a lo largo del tiempo.']
+].map(s=>feat(s[0],s[1],s[2])).join('');
+
+/* por qué contratan SERGUR */
+document.getElementById('razonesGrid').innerHTML=[
+  ['shield','Seguridad','Resiste impacto real, no solo se ve firme.'],
+  ['award','Confianza','Un ingeniero pone su nombre en el trabajo.'],
+  ['shieldcheck','Respaldo','Garantía por escrito que se cumple.'],
+  ['clock','Experiencia','Criterio técnico de años en terreno.'],
+  ['doc','Documentación','Cada obra queda registrada e inspeccionada.'],
+  ['check','Garantía','Hasta 5 años, no una promesa verbal.'],
+  ['headset','Postventa','Inspección anual y respuesta cuando la necesitas.'],
+  ['gear','A medida','La solución se diseña para tu caso, no genérica.']
+].map(r=>feat(r[0],r[1],r[2])).join('');
+
+/* responsable técnico — 5 pilares de autoridad */
+document.getElementById('respPilares').innerHTML=[
+  ['gear','Calcula','Define anclajes y material según la carga real, no a ojo.'],
+  ['clipboard','Supervisa','Controla la instalación en terreno, punto por punto.'],
+  ['doc','Firma','Respalda técnicamente cada obra entregada.'],
+  ['shield','Responde','Garantía con nombre y cara, no promesa verbal.'],
+  ['award','Dirige','Un solo responsable de principio a fin.']
+].map(r=>feat(r[0],r[1],r[2])).join('');
+document.getElementById('checklist').innerHTML=[
+  ['Soporte verificado','Confirmamos que el material resiste el anclaje.'],
+  ['Cáncamos según cálculo','Cantidad y separación definidas, no improvisadas.'],
+  ['Tensión y guardacabos','Cable firme, sin holguras ni huecos.'],
+  ['Registro fotográfico','Antes, durante y después de la instalación.'],
+  ['Inspección final firmada','Nada se entrega sin verificar punto por punto.']
+].map(c=>titem('check',c[0],c[1],'ok')).join('');
+document.getElementById('matnorm').innerHTML=[
+  ['Malla y cable de grado técnico','Con certificado de ensayo de laboratorio, no monofilamento de ferretería.'],
+  ['Anclajes y fijaciones inox','Resisten corrosión y carga en el tiempo.'],
+  ['Referencia técnica NBR 16046','Estándar de redes de seguridad como base de diseño.'],
+  ['Ensayo de laboratorio','Respaldo del comportamiento del material.']
+].map(c=>titem('scale',c[0],c[1],'ok')).join('');
+
+/* casos */
+document.getElementById('casosGrid').innerHTML=[
+  ['c1','building','Residencial','Balcones y ventanas en departamentos y casas.'],
+  ['c2','factory','Industrial','Perímetros y protección en faena.'],
+  ['c3','doc','Antes / Después','Instalaciones documentadas paso a paso.']
+].map(c=>`<div class="svc reveal">${scene(c[0],c[1],0)}<div class="cap"><h3>${c[2]}</h3><p>${c[3]}</p><a class="go" href="#cotizar">Quiero algo así</a></div></div>`).join('');
+
+/* ===== COTIZADOR — wizard 9 pasos ===== */
+const PERFILES=[['Particular','family'],['Colegio','building'],['Empresa','factory'],['Construcción','crane'],['Arreglo','wrench']];
+const TIPOS=[['Balcón','building'],['Terraza','building'],['Ventana','ladder'],['Escalera','ladder'],['Piscina','fence'],['Patio','fence'],['Cierre perimetral','fence'],['Otro','doc']];
+const TARIFA=8500, MINOBRA=55000;
+let cart=[], curTipo='', perfil='', fotosItem=0, fotosTot=0, agendaDia='', agendaHora='', codCotiz='', scoreLead='', datosLead={};
+/* paso 1 perfil */
+document.getElementById('perfilGrid').innerHTML=PERFILES.map((p,i)=>`<div class="perfil-card" data-p="${i}" onclick="elegirPerfil(${i})"><span class="ic">${ico(p[1])}</span><b>${p[0]}</b></div>`).join('');
+function elegirPerfil(i){document.querySelectorAll('.perfil-card').forEach(e=>e.classList.remove('sel'));document.querySelector('[data-p="'+i+'"]').classList.add('sel');
+  perfil=PERFILES[i][0];trackEvent('quote_perfil',{perfil});setTimeout(()=>qStep(2),150);}
+/* paso 2 tipos */
+document.getElementById('tipoGrid').innerHTML=TIPOS.map((t,i)=>`<div class="q-opt" data-i="${i}" onclick="elegirTipo(${i})"><span class="ic" style="display:block;margin:0 auto 5px">${ico(t[1])}</span>${t[0]}</div>`).join('');
+function elegirTipo(i){curTipo=TIPOS[i][0];trackEvent('quote_type',{tipo:curTipo});
+  document.getElementById('medH').textContent='Medidas · '+curTipo;
+  document.getElementById('qA').value='';document.getElementById('qH').value='';document.getElementById('qC').value='1';fotosItem=0;
+  document.getElementById('qFotItemNote').textContent='Ayuda a estimar mejor. Opcional.';qStep(3);}
+function fotoItem(){const f=document.getElementById('qFotoItem');fotosItem=(f&&f.files)?f.files.length:0;
+  document.getElementById('qFotItemNote').textContent=fotosItem?('Foto agregada para este espacio.'):'Ayuda a estimar mejor. Opcional.';}
+/* navegación + progreso */
+function qStep(n){document.querySelectorAll('.q-step').forEach(s=>s.classList.toggle('on',+s.dataset.s===n));
+  const pn=document.getElementById('qPnum');if(pn)pn.textContent=n;
+  const pf=document.getElementById('qProgFill');if(pf)pf.style.width=Math.round(n/9*100)+'%';
+  if(n===2)renderCart();if(n===4)renderAnalisis();if(n===5)renderCotiz();
+  try{document.getElementById('cotizar').scrollIntoView({block:'nearest'});}catch(e){}}
+/* carrito */
+function agregarItem(){const A=parseFloat(document.getElementById('qA').value)||0,H=parseFloat(document.getElementById('qH').value)||0,C=Math.max(1,parseInt(document.getElementById('qC').value)||1);
+  if(!A||!H){alert('Ingresa ancho y alto aproximados.');return;}
+  const perim=(2*A+2*H)*C,sup=A*H*C,sub=Math.round(perim*TARIFA/1000)*1000;
+  cart.push({tipo:curTipo,A,H,C,perim,sup,sub,foto:fotosItem});fotosTot+=fotosItem;
+  trackEvent('quote_add',{tipo:curTipo,items:cart.length});qStep(2);}
+function delItem(i){fotosTot-=(cart[i].foto||0);cart.splice(i,1);trackEvent('quote_remove',{items:cart.length});renderCart();}
+function renderCart(){const L=document.getElementById('cartList2');if(L)L.innerHTML=cart.length?cart.map((c,i)=>`<div class="q-item"><div class="qi-t"><b>${c.tipo}</b><span>${c.A}×${c.H}m · ${c.C} u${c.foto?' · 📷':''}</span></div><div class="qi-p">$${c.sub.toLocaleString('es-CL')}</div><button class="qi-x" onclick="delItem(${i})" aria-label="Quitar">×</button></div>`).join(''):'<div class="q-empty">Aún no agregas espacios. Toca un tipo arriba.</div>';}
+function irAnalisis(){if(!cart.length){alert('Agrega al menos un espacio.');return;}qStep(4);}
+/* cálculos */
+function totalRango(){const suma=cart.reduce((a,b)=>a+b.sub,0),base=Math.max(MINOBRA,suma);return{base,lo:Math.round(base*0.9/1000)*1000,hi:Math.round(base*1.2/1000)*1000};}
+function tiempoEstim(){const n=cart.reduce((a,b)=>a+b.C,0);return n<=3?'1 jornada':n<=6?'1 a 2 jornadas':'2 a 3 jornadas';}
+function nivelComplejidad(){const perimT=cart.reduce((a,b)=>a+b.perim,0),n=cart.reduce((a,b)=>a+b.C,0),t=cart.map(c=>c.tipo);
+  let lv='Baja';if(t.includes('Balcón')||t.includes('Terraza')||t.includes('Escalera')||t.includes('Cierre perimetral'))lv='Media';
+  if(perimT>40||n>=4)lv='Alta';return lv;}
+function enAltura(){return cart.some(c=>['Balcón','Terraza','Ventana','Escalera'].includes(c.tipo));}
+function lvlClass(v){return v==='Baja'?'lvl-baja':(v==='Alta'?'lvl-alta':'lvl-media');}
+/* === Análisis técnico (reemplaza el "nivel de confianza") === */
+function riesgosDetectados(){const t=cart.map(c=>c.tipo),r=[];
+  if(t.includes('Balcón')||t.includes('Terraza'))r.push('Caída de altura de personas');
+  if(t.includes('Ventana'))r.push('Caída de niños/mascotas y objetos por ventana');
+  if(t.includes('Escalera'))r.push('Caída por hueco o costado de escalera');
+  if(t.includes('Piscina'))r.push('Acceso de niños al agua (ahogamiento)');
+  if(t.includes('Patio'))r.push('Caída / acceso no controlado');
+  if(t.includes('Cierre perimetral'))r.push('Intrusión / delimitación del recinto');
+  if(!r.length)r.push('Se determina en la evaluación técnica en terreno');
+  return r;}
+function anclajeSugerido(){return 'En hormigón: anclaje directo con tornillería inoxidable. En tabique o baranda de vidrio: pilar de refuerzo piso-techo (no tarugo común). Se define en la visita.';}
+function necesitaPilar(){return enAltura()?'Probable — se confirma en visita':'No previsto';}
+function necesitaVisita(){const c=nivelComplejidad();return (c!=='Baja'||enAltura())?'Sí, recomendada':'Opcional';}
+function recomendacionTecnica(){const c=nivelComplejidad();
+  if(c==='Alta')return 'Trabajo exigente: requiere dirección de ingeniero responsable, resguardo en altura y verificación de anclajes antes de instalar.';
+  if(c==='Media')return 'Instalación estándar con resguardo. Verificación del sustrato de anclaje en terreno para definir refuerzos.';
+  return 'Instalación directa. Igual se verifica el punto de anclaje para garantizar resistencia real.';}
+function genCodigo(){if(codCotiz)return codCotiz;const d=new Date();const p=n=>String(n).padStart(2,'0');
+  codCotiz='SRG-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+Math.floor(1000+Math.random()*9000);return codCotiz;}
+function renderAnalisis(){const sup=cart.reduce((a,b)=>a+b.sup,0),comp=nivelComplejidad(),alt=enAltura();
+  const rows=[
+    ['Superficie estimada',sup.toFixed(1)+' m²',''],
+    ['Espacios',cart.reduce((a,b)=>a+b.C,0)+' punto(s)',''],
+    ['Complejidad',comp,comp],
+    ['Altura',alt?'Trabajo en altura':'Nivel de suelo',alt?'Media':'Baja'],
+    ['Acceso',alt?'Requiere resguardo':'Acceso estándar',alt?'Media':'Baja'],
+    ['¿Requiere pilar de refuerzo?',necesitaPilar(),''],
+    ['¿Requiere visita técnica?',necesitaVisita(),''],
+    ['Tiempo estimado de instalación','~'+tiempoEstim(),'']
+  ];
+  const tabla=rows.map(r=>`<div class="q-anrow"><b>${r[0]}</b>${r[2]?`<span class="lvl ${lvlClass(r[2])}">${r[1]}</span>`:`<span class="v">${r[1]}</span>`}</div>`).join('');
+  const riesgos='<div class="q-disc" style="margin-top:12px"><b>Riesgos detectados:</b><br>'+riesgosDetectados().map(x=>'• '+x).join('<br>')+'</div>';
+  const anclaje='<div class="q-disc" style="margin-top:10px"><b>El punto que falla no es la malla, es el anclaje.</b><br>'+anclajeSugerido()+'</div>';
+  const reco='<div class="q-disc" style="margin-top:10px"><b>Recomendación técnica:</b><br>'+recomendacionTecnica()+'</div>';
+  document.getElementById('analisisBox').innerHTML=tabla+riesgos+anclaje+reco;}
+function renderCotiz(){const r=totalRango();genCodigo();
+  document.getElementById('cartList').innerHTML=cart.map((c,i)=>`<div class="q-item"><div class="qi-t"><b>${c.tipo}</b><span>${c.A}×${c.H}m · ${c.C} u</span></div><div class="qi-p">$${c.sub.toLocaleString('es-CL')}</div></div>`).join('');
+  document.getElementById('qVal').textContent='$'+r.lo.toLocaleString('es-CL')+' – $'+r.hi.toLocaleString('es-CL');
+  document.getElementById('qDet').textContent=cart.reduce((a,b)=>a+b.C,0)+' punto(s) · complejidad '+nivelComplejidad()+' · ~'+tiempoEstim();
+  document.getElementById('qConf').innerHTML='<div class="q-conf">Código de cotización: <b>'+codCotiz+'</b>. Complejidad <b>'+nivelComplejidad()+'</b> · '+necesitaVisita()+' visita técnica. Valor referencial; se cierra en la evaluación sin costo.</div>';}
+/* agenda */
+function irAgenda(){const g=id=>document.getElementById(id).value.trim();
+  if(!g('qNom')||!g('qTel')||!g('qCom')){alert('Completa nombre, teléfono y comuna.');return;}
+  const mail=g('qMail');if(mail&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){alert('Revisa el correo (o déjalo vacío).');return;}
+  buildAgenda();qStep(7);}
+function buildAgenda(){const dias=[],hoy=new Date(),nom=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];let d=0;
+  while(dias.length<6){const f=new Date(hoy);f.setDate(hoy.getDate()+d+1);if(f.getDay()!==0)dias.push(f);d++;}
+  document.getElementById('diaGrid').innerHTML=dias.map((f,i)=>{const lbl=nom[f.getDay()]+' '+f.getDate()+'/'+(f.getMonth()+1);return `<div class="slot" data-dia="${lbl}" onclick="pickDia(this,'${lbl}')">${lbl}</div>`;}).join('');
+  const horas=['09:00','11:00','12:30','15:00','16:30'];
+  document.getElementById('horaGrid').innerHTML=horas.map(h=>`<div class="slot" data-hora="${h}" onclick="pickHora(this,'${h}')">${h}</div>`).join('');
+  agendaDia='';agendaHora='';}
+function pickDia(el,v){document.querySelectorAll('#diaGrid .slot').forEach(s=>s.classList.remove('sel'));el.classList.add('sel');agendaDia=v;}
+function pickHora(el,v){document.querySelectorAll('#horaGrid .slot').forEach(s=>s.classList.remove('sel'));el.classList.add('sel');agendaHora=v;}
+function irReserva(){if(!agendaDia||!agendaHora){alert('Elige día y hora.');return;}
+  const r=totalRango();
+  document.getElementById('resumenReserva').innerHTML=cart.length+' espacio(s) · <b>$'+r.lo.toLocaleString('es-CL')+'–$'+r.hi.toLocaleString('es-CL')+'</b><br>Visita: <b>'+agendaDia+' '+agendaHora+'</b> · '+document.getElementById('qCom').value;
+  qStep(8);}
+/* lead scoring 🟢🟡🔴 */
+function leadScore(){const r=totalRango();const sel=document.getElementById('qSolicita');const sol=sel?sel.value:'Particular';
+  let p=0;
+  if(r.base>=400000)p+=2;else if(r.base>=200000)p+=1;
+  if(cart.reduce((a,b)=>a+b.C,0)>=3)p+=1;
+  if(agendaDia&&agendaHora)p+=1;
+  if(sol&&sol!=='Particular')p+=2;
+  if(enAltura())p+=1;
+  return p>=5?'caliente':(p>=3?'medio':'frio');}
+/* confirmación = crea lead + seguimiento */
+function confirmarReserva(){const g=id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+  const r=totalRango();genCodigo();scoreLead=leadScore();
+  const resumen=cart.map(c=>c.C+' '+c.tipo).join(', ');
+  const detalle=cart.map(c=>`${c.C}x ${c.tipo} (${c.A}x${c.H}m)=$${c.sub.toLocaleString('es-CL')}`).join(' | ');
+  const solicita=g('qSolicita')||'Particular';
+  const b2b=[g('qEmpresa')&&('Empresa: '+g('qEmpresa')),g('qCargo')&&('Cargo: '+g('qCargo')),g('qCondo')&&('Condominio: '+g('qCondo')),g('qDepto')&&('Depto: '+g('qDepto')),g('qTorre')&&('Torre: '+g('qTorre'))].filter(Boolean).join(' · ');
+  const coment='['+codCotiz+'] Perfil: '+perfil+' · Solicita: '+solicita+'. Estimado $'+r.lo.toLocaleString('es-CL')+'–$'+r.hi.toLocaleString('es-CL')+'. Complejidad '+nivelComplejidad()+(enAltura()?', trabajo en altura':'')+'. '+necesitaVisita()+' visita. Riesgos: '+riesgosDetectados().join('; ')+'. Visita: '+agendaDia+' '+agendaHora+'. '+(b2b?(b2b+'. '):'')+(g('qComo')?('Conoció: '+g('qComo')+'. '):'')+(fotosTot?('Trae '+fotosTot+' foto(s). '):'')+'Detalle: '+detalle;
+  datosLead={codigo:codCotiz,nombre:g('qNom'),tel:g('qTel'),email:g('qMail'),comuna:g('qCom'),direccion:g('qDir'),solicita,score:scoreLead,resumen,detalle,rango:r,complejidad:nivelComplejidad(),tiempo:tiempoEstim(),riesgos:riesgosDetectados(),recomendacion:recomendacionTecnica(),anclaje:anclajeSugerido(),pilar:necesitaPilar(),visita:necesitaVisita(),agenda:agendaDia+' '+agendaHora};
+  pushLeadOS({nombre:g('qNom'),tel:g('qTel'),email:g('qMail'),comuna:g('qCom'),direccion:g('qDir'),
+    perfil,tipo:'Cotización: '+resumen,medidas:detalle,estimado:r.base,
+    agenda_dia:agendaDia,agenda_hora:agendaHora,comentarios:coment,fotos:fotosTot,seguimiento:'Cotizado,Agendado',
+    codigo:codCotiz,score:scoreLead,solicita,depto:g('qDepto'),torre:g('qTorre'),condominio:g('qCondo'),empresa:g('qEmpresa'),cargo:g('qCargo'),como_conocio:g('qComo')});
+  trackEvent('lead_submit',{canal:CANAL,via:'cotizador',perfil,items:cart.length,estimado:r.base,fotos:fotosTot,agendado:true,score:scoreLead});
+  document.getElementById('qOkNom').textContent=g('qNom').split(' ')[0];
+  document.getElementById('okMsg').textContent='Cotización '+codCotiz+' registrada y visita agendada para el '+agendaDia+' a las '+agendaHora+'. Un especialista confirma hoy.';
+  document.getElementById('qWa').href=waLink('Acabo de cotizar ('+codCotiz+': '+resumen+') y agendé visita '+agendaDia+' '+agendaHora+'. Te envío fotos.');
+  const etapas=[['Cotizado',1],['Agendado',1],['Visita técnica',0],['Instalación',0],['Garantía + inspección anual',0]];
+  document.getElementById('pipe').innerHTML=etapas.map((e,i)=>`<div class="pipe-step ${e[1]?'done':(i===2?'now':'')}"><span class="pd">${e[1]?'✓':(i+1)}</span><div><b>${e[0]}</b>${i===2?'<span>siguiente paso</span>':''}</div></div>`).join('');
+  qStep(9);}
+function reiniciarQuoter(){cart=[];curTipo='';perfil='';fotosItem=0;fotosTot=0;agendaDia='';agendaHora='';codCotiz='';scoreLead='';datosLead={};
+  document.querySelectorAll('.perfil-card,.q-opt,.slot').forEach(e=>e.classList.remove('sel'));qStep(1);}
+/* ===== PDF GRATIS — Análisis Técnico Preliminar ===== */
+function generarPDF(){
+  if(!window.jspdf||!datosLead.codigo){alert('Genera primero tu cotización.');return;}
+  const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});
+  const O=[242,100,25],N=[14,34,51],W=210,L=18,R=192;let y;
+  doc.setFillColor(N[0],N[1],N[2]);doc.rect(0,0,W,28,'F');
+  doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(20);doc.text('SERGUR',L,16);
+  doc.setFontSize(8);doc.setTextColor(O[0],O[1],O[2]);doc.text('CONSTRUCCION · INDUSTRIA · SEGURIDAD',L,22);
+  doc.setTextColor(255,255,255);doc.setFontSize(9);doc.text('Analisis Tecnico Preliminar',R,16,{align:'right'});
+  doc.setFontSize(8);doc.text(datosLead.codigo,R,22,{align:'right'});
+  y=40;doc.setTextColor(N[0],N[1],N[2]);doc.setFontSize(13);doc.setFont('helvetica','bold');
+  doc.text('ANALISIS TECNICO PRELIMINAR',L,y);doc.setDrawColor(O[0],O[1],O[2]);doc.setLineWidth(.8);doc.line(L,y+2,R,y+2);y+=10;
+  doc.setFontSize(10);doc.setFont('helvetica','normal');doc.setTextColor(60,60,60);
+  const hoy=new Date().toLocaleDateString('es-CL');
+  [['Cliente',datosLead.nombre||'—'],['Telefono',datosLead.tel||'—'],['Comuna',datosLead.comuna||'—'],['Direccion',datosLead.direccion||'—'],['Solicita',datosLead.solicita||'—'],['Fecha',hoy]]
+    .forEach(p=>{doc.setFont('helvetica','bold');doc.text(p[0]+':',L,y);doc.setFont('helvetica','normal');doc.text(String(p[1]),L+32,y);y+=6;});
+  y+=2;
+  const H=(t)=>{doc.setFont('helvetica','bold');doc.setTextColor(N[0],N[1],N[2]);doc.setFontSize(11);doc.text(t,L,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(60,60,60);};
+  H('Espacios y medidas');doc.splitTextToSize(datosLead.detalle||'—',R-L).forEach(t=>{doc.text(t,L,y);y+=5;});y+=3;
+  H('Evaluacion tecnica');
+  [['Complejidad',datosLead.complejidad],['Tiempo estimado','~'+datosLead.tiempo],['Requiere pilar de refuerzo',datosLead.pilar],['Requiere visita tecnica',datosLead.visita]]
+    .forEach(p=>{doc.setFont('helvetica','bold');doc.text(p[0]+':',L,y);doc.setFont('helvetica','normal');doc.text(String(p[1]),L+70,y);y+=5.5;});y+=2;
+  H('Riesgos detectados');(datosLead.riesgos||[]).forEach(rk=>{doc.text('• '+rk,L,y);y+=5;});y+=2;
+  H('Recomendacion tecnica');doc.splitTextToSize((datosLead.recomendacion||'')+' '+(datosLead.anclaje||''),R-L).forEach(t=>{doc.text(t,L,y);y+=5;});y+=4;
+  doc.setFillColor(245,245,247);doc.rect(L,y-4,R-L,15,'F');
+  doc.setFont('helvetica','bold');doc.setTextColor(N[0],N[1],N[2]);doc.setFontSize(11);doc.text('Inversion referencial estimada:',L+3,y+5);
+  doc.setTextColor(O[0],O[1],O[2]);doc.setFontSize(13);doc.text('$'+datosLead.rango.lo.toLocaleString('es-CL')+' - $'+datosLead.rango.hi.toLocaleString('es-CL'),R-3,y+5,{align:'right'});y+=20;
+  doc.setFontSize(7.5);doc.setTextColor(120,120,120);doc.setFont('helvetica','normal');
+  doc.splitTextToSize('Documento preliminar sin costo. Valor referencial sobre medidas aproximadas; el precio final se cierra en la evaluacion tecnica en terreno. SERGUR Ingenieria y Seguridad SpA · Santiago · Ingeniero responsable · Garantia por escrito + inspeccion anual.',R-L).forEach(t=>{doc.text(t,L,y);y+=4;});
+  doc.save('SERGUR_'+datosLead.codigo+'.pdf');
+  try{const db=osLoad();const l=(db.leads||[]).find(x=>x.codigo===datosLead.codigo);if(l){l.pdf=true;osSave(db);}}catch(e){}
+  trackEvent('pdf_download',{codigo:datosLead.codigo});
+}
+
+/* ===== FORM ===== */
+function enviarLead(){const g=id=>document.getElementById(id).value.trim();const nom=g('fNom'),tel=g('fTel');
+  if(!nom||!tel){alert('Completa al menos nombre y teléfono.');return;}
+  pushLeadOS({nombre:nom,tel:tel,comuna:g('fCom'),tipo:g('fTipo')||'Sin especificar',medidas:'',estimado:0,comentarios:g('fMsg'),fotos:0});
+  trackEvent('lead_submit',{canal:CANAL,tipo:g('fTipo'),via:'form'});
+  document.getElementById('okNom').textContent=nom.split(' ')[0];
+  document.getElementById('okWa').href=waLink('Acabo de pedir mi evaluación, te envío fotos.');
+  document.getElementById('formView').style.display='none';document.getElementById('okView').style.display='block';}
+
+/* ===== PUENTE → SERGUR OS (local) + BACKEND (remoto) ===== */
+const SERGUR_OS_KEY='sergur_os_data_v2';
+function osLoad(){try{const v=localStorage.getItem(SERGUR_OS_KEY);return v?JSON.parse(v):{};}catch(e){return {};}}
+function osSave(db){try{localStorage.setItem(SERGUR_OS_KEY,JSON.stringify(db));return true;}catch(e){return false;}}
+function pushLeadOS(d){
+  /* 1) LOCAL — compatibilidad OS en el mismo navegador */
+  const db=osLoad();if(!Array.isArray(db.leads))db.leads=[];
+  const dup=db.leads.find(l=>l.tel===d.tel&&(Date.now()-(l.fecha||0))<86400000&&l.estado==='nuevo');
+  if(!dup){db.leads.unshift({id:Date.now(),fecha:Date.now(),nombre:d.nombre,tel:d.tel,email:d.email||'',comuna:d.comuna||'',direccion:d.direccion||'',perfil:d.perfil||'',medidas:d.medidas||'',tipo:d.tipo||'',estimado:d.estimado||0,agenda_dia:d.agenda_dia||'',agenda_hora:d.agenda_hora||'',seguimiento:d.seguimiento||'',fotos:d.fotos||0,comentarios:d.comentarios||'',estado:'nuevo',origen:CANAL,utm_source:UTM.source,utm_campaign:UTM.campaign,utm_medium:UTM.medium,clienteId:null,codigo:d.codigo||'',score:d.score||'',solicita:d.solicita||'',depto:d.depto||'',torre:d.torre||'',condominio:d.condominio||'',empresa:d.empresa||'',cargo:d.cargo||'',como_conocio:d.como_conocio||''});osSave(db);}
+  /* 2) REMOTO — Supabase: leads desde cualquier dispositivo. Solo si configuraste credenciales. */
+  if(SUPA_URL&&SUPA_KEY){
+    try{fetch(SUPA_URL+'/rest/v1/leads',{method:'POST',
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({nombre:d.nombre,tel:d.tel,email:d.email||'',comuna:d.comuna||'',direccion:d.direccion||'',perfil:d.perfil||'',tipo:d.tipo||'',medidas:d.medidas||'',estimado:d.estimado||0,agenda_dia:d.agenda_dia||'',agenda_hora:d.agenda_hora||'',fotos:d.fotos||0,comentarios:d.comentarios||'',origen:CANAL,utm_source:UTM.source,utm_campaign:UTM.campaign,utm_medium:UTM.medium,codigo:d.codigo||'',score:d.score||'',solicita:d.solicita||'',depto:d.depto||'',torre:d.torre||'',condominio:d.condominio||'',empresa:d.empresa||'',cargo:d.cargo||'',como_conocio:d.como_conocio||''})
+    }).catch(()=>{});}catch(e){}
+  }
+}
+
+/* ===== UX ===== */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.08});
+function obs(){document.querySelectorAll('.reveal').forEach(e=>io.observe(e));}
+obs();setTimeout(obs,50);
+</script>
+</body>
+</html>
